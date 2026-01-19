@@ -47,8 +47,8 @@ The library is designed for extensibility and can be used to implement any finit
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd PR_assessment
+git clone https://github.com/trvillan/policy-reporter-fsm.git
+cd policy-reporter-fsm
 
 # Create a virtual environment (recommended)
 python -m venv venv
