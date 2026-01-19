@@ -1,28 +1,3 @@
-"""
-Mod-Three: An example implementation using the FSM library.
-
-This module demonstrates how to use the FiniteAutomaton class to compute
-the remainder when a binary number is divided by three.
-
-The FSM is configured according to the following specification:
-    Q = {S0, S1, S2}
-    Σ = {0, 1}
-    q0 = S0
-    F = {S0, S1, S2}
-    δ(S0,0) = S0; δ(S0,1) = S1
-    δ(S1,0) = S2; δ(S1,1) = S0
-    δ(S2,0) = S1; δ(S2,1) = S2
-
-Example:
-    >>> mod_three("1101")  # 13 in decimal
-    1
-    >>> mod_three("1110")  # 14 in decimal
-    2
-    >>> mod_three("1111")  # 15 in decimal
-    0
-"""
-
-
 from enum import Enum
 
 from fsm import FiniteAutomaton
