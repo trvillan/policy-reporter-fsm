@@ -63,40 +63,14 @@ pip install -e ".[dev]"
 Run the example script to see the mod-three function in action:
 
 ```bash
-python run_example.py
-```
-
-Output:
-```
-Mod-Three FSM Examples
-========================================
-mod_three('1101') = 1  (binary 1101 = 13, 13 % 3 = 1)
-mod_three('1110') = 2  (binary 1110 = 14, 14 % 3 = 2)
-mod_three('1111') = 0  (binary 1111 = 15, 15 % 3 = 0)
- 
-...
+python run_example.py    # See the mod-three function in action
 ```
 
 ## Running Tests
 
 ```bash
-# Run all tests
-pytest
-
-# Run with coverage report
-pytest --cov=src --cov-report=term-missing
-
-# Run specific test file
-pytest tests/test_mod_three.py
-
-# Run with verbose output
-pytest -v
-```
-
-## Type Checking
-
-```bash
-mypy src/ examples/
+pytest                    # Run all tests
+pytest --cov=src          # Run with coverage
 ```
 
 ## Usage
@@ -235,4 +209,32 @@ Output Mapping:
   S0 → 0 (divisible by 3)
   S1 → 1 (remainder 1)
   S2 → 2 (remainder 2)
+```
+
+## Future Improvements
+
+The following enhancements could extend the library's capabilities:
+
+### Serialization
+Add the ability to save/load automata from JSON or YAML files, making configurations portable and version-controllable:
+```python
+fa = FiniteAutomaton.from_json("automaton.json")
+fa.to_json("automaton.json")
+```
+
+### Transition Logging
+Add a debug mode that logs or yields each state transition, useful for understanding how input is processed:
+```python
+for state, symbol, next_state in fa.trace("1101"):
+    logging.info(f"{state} --{symbol}--> {next_state}")
+```
+
+### Event Hooks
+Register callbacks on state transitions to trigger side effects (emails, database updates, notifications):
+```python
+fa.on_transition(
+    from_state=State.START,
+    to_state=State.ACCEPTING,
+    callback=send_notification
+)
 ```
